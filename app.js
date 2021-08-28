@@ -13,6 +13,7 @@ let i = incomeElements.length;
 const expences = document.querySelector(".expenses__list");
 const expencesElements = expences.querySelectorAll(".item");
 let j = expencesElements.length;
+const expencesPercentage = document.querySelector(".budget__expenses--percentage");
 document.querySelector(".add__btn").addEventListener("click", function () {
   if (inputType.value == "inc" && description.value !== "" && input.value !== "") {
     totalIncome.innerHTML = (Number(totalIncome.innerHTML) + Number(input.value)).toFixed(2);
@@ -41,4 +42,12 @@ document.querySelector(".add__btn").addEventListener("click", function () {
   input.value = null;
   inputType.value = "inc";
   total.innerHTML = (Number(totalIncome.innerHTML) - Number(totalExpences.innerHTML)).toFixed(2);
+  expencesPercentage.innerHTML = Math.round((Number(totalExpences.innerHTML) / Number(totalIncome.innerHTML)) * 100) + "%";
 });
+
+const deleteButtons = document.querySelectorAll(".item__delete--btn");
+for (let deleteButton of deleteButtons) {
+  deleteButton.addEventListener("click", function () {
+    deleteButton.parentElement.parentElement.parentElement.remove();
+  });
+}
