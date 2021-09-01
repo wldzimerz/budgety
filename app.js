@@ -9,14 +9,13 @@ const description = document.querySelector(".add__description");
 const input = document.querySelector(".add__value");
 const income = document.querySelector(".income__list");
 const incomeElements = income.getElementsByClassName("item");
-let incomeListCount = incomeElements.length;
 const expences = document.querySelector(".expenses__list");
 const expencesElements = expences.getElementsByClassName("item");
-let expenceListCount = expencesElements.length;
 const expencesPercentage = document.querySelector(".budget__expenses--percentage");
 expencesPercentage.innerHTML = "--";
-
 document.querySelector(".add__btn").addEventListener("click", () => {
+  let expenceListCount = expencesElements.length;
+  let incomeListCount = incomeElements.length;
   if (inputType.value == "inc" && description.value !== "" && input.value !== "") {
     totalIncome.innerHTML = (Number(totalIncome.innerHTML) + Number(input.value)).toFixed(2);
     income.insertAdjacentHTML(
